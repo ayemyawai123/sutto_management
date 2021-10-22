@@ -15,8 +15,8 @@ class CreateMUserTable extends Migration
     {
         Schema::create('m_user', function (Blueprint $table) {
             $table->id();
-            $table->integer('membership_no', 10)->comment('会員番号(stores予約)');
-            $table->integer('customer_no', 50)->comment('顧客番号');
+            $table->integer('membership_no')->comment('会員番号(stores予約)');
+            $table->integer('customer_no')->comment('顧客番号');
             $table->string('reservation_customer_nm', 10)->comment('予約者の氏名');
             $table->string('customer_nm', 50)->comment('顧客名');
             $table->string('mail_address')->comment('メールアドレス');
@@ -32,8 +32,7 @@ class CreateMUserTable extends Migration
             $table->dateTime('data_u_ymd')->comment('更新日');
             $table->string('data_u_user',100)->comment('更新者');
             $table->timestamps();
-            $table->unique(['user_id']);
-        });
+          });
     }
 
     /**
