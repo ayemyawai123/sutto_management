@@ -32,6 +32,8 @@ class CreateMUserTable extends Migration
                 $table->dateTime('data_u_ymd')->comment('更新日');
                 $table->string('data_u_user',100)->comment('更新者');
             $table->timestamps();
+
+
         });
     }
 
