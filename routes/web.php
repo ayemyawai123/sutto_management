@@ -19,17 +19,35 @@ use App\Http\Controllers\Auth\RegisterController as Register;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/noti_manage', [TestController::class, 'index']);
-Route::group(['middleware' => 'auth:admin'], function () {
-    Route::get('/', [Login::class, 'showAdminLoginForm'])->name('admin.login');
+Route::middleware('web')->domain('app.phpunit.test')->group(function () {
+
+Route::get('/login', [Login::class, 'showAdminLoginForm'])->name('admin.login');
 
     //post login information
-    Route::post('login/admin', [Login::class, 'adminLogin'])->name('login.admin');
-    Auth::routes();
+Route::post('login/admin', [Login::class, 'adminLogin'])->name('login.admin');
 
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth:admin'], function () {
+   //
+   Route::get('/noti_manage', [TestController::class, 'index']);
+
+   Route::get('/del_notice_id/{id}', [TestController::class, 'delete']);
+});
+
+});
+
+
+Route::get('logout', function () {
+    Session()->flush();
+    auth()->logout();
+    return Redirect::to('/');
+})->name('logout');
+//Route::view('/home', 'home')->middleware('auth');
+
+Auth::routes();
+Route::view('/', 'welcome');
+//
+Route::middleware('web')->domain('phpunit.test')->group(function () {
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 });

@@ -15,11 +15,15 @@ class TestController extends Controller
      */
     public function __construct(NotiService $notiService)
     {
-        //$this->middleware('auth');
+        $this->middleware(['auth']);
         $this->notiService = $notiService;
     }
     public function index(){
         $noti_list = $this->notiService->get_noti_list();
         return view('noti_manage',compact('noti_list'));
+    }
+    public function delete($id){
+        $this->notiService->delete($id);
+        return redirect('/noti_manage');
     }
 }

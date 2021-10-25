@@ -20,10 +20,10 @@ class CreateKMUserTable extends Migration
             $table->string('password', 128)->comment('パスワード');
             $table->string('mailaddress', 100)->comment('メールアドレス');
             $table->text('remarks')->comment('備考')->nullable();
-            $table->dateTime('data_i_ymd')->comment('登録日');
-            $table->string('data_i_user', 100)->comment('登録者');
-            $table->dateTime('data_u_ymd')->comment('更新日');
-            $table->string('data_u_user', 100)->comment('更新者');
+            $table->dateTime('data_i_ymd')->comment('登録日')->nullable();
+            $table->string('data_i_user', 100)->comment('登録者')->nullable();
+            $table->dateTime('data_u_ymd')->comment('更新日')->nullable();
+            $table->string('data_u_user', 100)->comment('更新者')->nullable();
             $table->rememberToken();
             $table->timestamps();
             // UKの設定

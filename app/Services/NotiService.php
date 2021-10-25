@@ -14,4 +14,16 @@ class NotiService
                         ->get();
         return $noti_information;
     }
+
+    public function delete($id){
+        DB::beginTransaction();
+    try{
+
+        DB::table('m_notice_info')->where('notice_id','=',$id)->delete();
+        DB::commit();
+        }
+    catch (\Exception $exception){
+        DB::rollBack();
+    }
+    }
 }

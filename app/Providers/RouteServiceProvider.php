@@ -18,7 +18,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/home';
-
+    public const ARTICLEMANAGE = '/noti_manage';
     /**
      * The controller namespace for the application.
      *
