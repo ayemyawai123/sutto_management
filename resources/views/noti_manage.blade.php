@@ -75,5 +75,23 @@
         </div>
     </div>
 </div>
+
+<!-- エラーモーダル -->
+<div class="modal fade" tabindex="-1" role="dialog" id="errDialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="color: red;">入力エラー</h5>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer bg-whitesmoke br">
+                <button style="margin-right: 10px;" type="button" class="btn btn-secondary"
+                    data-dismiss="modal">閉じる</button>
+            </div>
+            <input type="hidden" id="isError" value="False" />
+        </div>
+    </div>
+</div>
 @endsection
 

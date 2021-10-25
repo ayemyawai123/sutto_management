@@ -59,16 +59,16 @@ $(document).ready(function() {
         } else {
          //alert(data.status);
             $(".modal-title").text('システムエラー');
-            $(".modal_message").text('システムエラーが発生しました。 しばらく待ってから、もう一度削除してください。');
+            $(".modal-body").text('システムエラーが発生しました。 しばらく待ってから、もう一度削除してください。');
             $("#isClose").val(true);
-            $("#afterDeleteDialog").modal("show");
+            $("#errDialog").modal("show");
         }
     }).fail(function () {
 
         $(".modal-title").text('通信エラー');
-        $(".modal_message").text('通信エラーが発生しました。 しばらく待ってから、もう一度削除してください。');
+        $(".modal-body").text('通信エラーが発生しました。 しばらく待ってから、もう一度削除してください。');
         $("#isClose").val(true);
-        $("#afterDeleteDialog").modal("show");
+        $("#errDialog").modal("show");
     });
       });
 
