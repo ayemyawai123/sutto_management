@@ -62,7 +62,7 @@ Coded by www.creative-tim.com
                     <div class="info">
                         <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                             <span>
-                                suuto admin
+                               {{Auth()->user()->user_name}}
                                 <b class="caret"></b>
                             </span>
                         </a>
@@ -410,8 +410,6 @@ Coded by www.creative-tim.com
         </div>
     </div>
 
-    <form action="{{'/del_notice_id'}}" action="POST" id="del_notice_form">
-        @csrf
     <!-- small modal -->
     <div class="modal fade modal-primary" id="myModal10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
@@ -438,7 +436,7 @@ Coded by www.creative-tim.com
         </div>
     </div>
     <!--    end small modal -->
-    </form>
+
     <!--   Core JS Files   -->
     <script src="{{ asset('assets/js/core/jquery.min.js') }}"></script>
 
