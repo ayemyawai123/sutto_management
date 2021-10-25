@@ -37,9 +37,9 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             $hostname = $request->getHttpHost();
-            if ($hostname == "phpunit.test" && Auth::guard($guard)->check()) {
+            if ($hostname == "sutto_management.test" && Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
-            }elseif ($hostname == "app.phpunit.test" && Auth::guard($guard)->check()) {
+            }elseif ($hostname == "app.sutto_management.test" && Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::ARTICLEMANAGE);
             }
         }

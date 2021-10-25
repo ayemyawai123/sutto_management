@@ -16,14 +16,17 @@ class NotiService
     }
 
     public function delete($id){
+        $status ='';
         DB::beginTransaction();
     try{
-
+        $status = '0';
         DB::table('m_notice_info')->where('notice_id','=',$id)->delete();
         DB::commit();
         }
     catch (\Exception $exception){
+        $status = '1';
         DB::rollBack();
     }
+   return $status;
     }
 }

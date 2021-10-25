@@ -20,7 +20,7 @@ use App\Http\Controllers\Auth\RegisterController as Register;
 */
 
 
-Route::middleware('web')->domain('app.phpunit.test')->group(function () {
+Route::middleware('web')->domain(env('APP_URL'))->group(function () {
 
 Route::get('/login', [Login::class, 'showAdminLoginForm'])->name('admin.login');
 
@@ -47,7 +47,7 @@ Route::get('logout', function () {
 Auth::routes();
 Route::view('/', 'welcome');
 //
-Route::middleware('web')->domain('phpunit.test')->group(function () {
+Route::middleware('web')->domain(env('APP_LINK'))->group(function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 });

@@ -56,5 +56,24 @@
         </div> <!-- end col-md-12 -->
     </div> <!-- end row -->
 </div>
+
+<!-- 更新後モーダル -->
+<div class="modal fade" tabindex="-1" role="dialog" id="afterDeleteDialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+            </div>
+            <div class="modal-body">
+                <p class="modal_message"></p>
+            </div>
+            <div class="modal-footer bg-whitesmoke br">
+                <button style="margin-right: 10px;" type="button" class="btn btn-secondary"
+                    data-dismiss="modal">閉じる</button>
+            </div>
+            <input type="hidden" id="isClose" />
+        </div>
+    </div>
+</div>
 @endsection
 

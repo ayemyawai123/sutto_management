@@ -23,7 +23,15 @@ class TestController extends Controller
         return view('noti_manage',compact('noti_list'));
     }
     public function delete($id){
-        $this->notiService->delete($id);
-        return redirect('/noti_manage');
+
+    $status = $this->notiService->delete($id);
+    // 返却用変数設定
+     $ret = array(
+        "status" => $status,
+    );
+    // JSON返却
+    return response()->json($ret);
+       // return redirect('/noti_manage');
+
     }
 }
