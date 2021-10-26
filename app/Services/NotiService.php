@@ -27,6 +27,12 @@ class NotiService
         $status = '1';
         DB::rollBack();
     }
-   return $status;
+   // 返却用変数設定
+   $ret = array(
+    "status" => $status,
+    );
+    // JSON返却
+    return response()->json($ret);
+   // return redirect('/noti_manage');
     }
 }

@@ -24,14 +24,7 @@ class TestController extends Controller
     }
     public function delete($id){
 
-    $status = $this->notiService->delete($id);
-    // 返却用変数設定
-     $ret = array(
-        "status" => $status,
-    );
-    // JSON返却
-    return response()->json($ret);
-       // return redirect('/noti_manage');
+    return  $this->notiService->delete($id);
 
     }
 }
