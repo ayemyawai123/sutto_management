@@ -19,21 +19,24 @@ use App\Http\Controllers\Auth\RegisterController as Register;
 |
 */
 
-
+//for admin information
 Route::middleware('web')->domain(env('APP_URL'))->group(function () {
+    //for login information
+    Route::get('/login', [Login::class, 'showAdminLoginForm'])->name('admin.login');
+    Route::post('login/admin', [Login::class, 'adminLogin'])->name('login.admin');
 
-Route::get('/login', [Login::class, 'showAdminLoginForm'])->name('admin.login');
+    //for register information
+    Route::get('/register', [Register::class, 'showAdminRegisterForm'])->name('admin.register');
+    Route::post('register/admin', [Register::class, 'createAdmin'])->name('register.admin');
 
-    //post login information
-Route::post('login/admin', [Login::class, 'adminLogin'])->name('login.admin');
 
-Route::group(['middleware' => 'auth:admin'], function () {
-   //
-   Route::get('/noti_manage', [TestController::class, 'index']);
 
-   Route::get('/del_notice_id/{id}', [TestController::class, 'delete']);
-});
+    Route::group(['middleware' => 'auth:admin'], function () {
+        //
+        Route::get('/noti_manage', [TestController::class, 'index']);
 
+        Route::get('/del_notice_id/{id}', [TestController::class, 'delete']);
+    });
 });
 Auth::routes();
 
@@ -46,11 +49,12 @@ Route::get('logout', function () {
 Route::get('/', function () {
 
     return redirect('/login');
-
 });
 /*Route::view('/', 'welcome');*/
 //
+
+//for client route information
 Route::middleware('web')->domain(env('APP_LINK'))->group(function () {
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 });

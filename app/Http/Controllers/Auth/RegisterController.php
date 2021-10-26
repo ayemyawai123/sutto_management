@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -91,13 +92,14 @@ class RegisterController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         }
-
+        $uuid = Str::uuid();
         $admin = Admin::create([
+            'user_id' => $uuid,
             'user_name' => $request['user_name'],
             'mailaddress' => $request['mailaddress'],
             'password' => Hash::make($request['password']),
         ]);
 
-        return redirect()->intended('/home');
+        return redirect()->intended('/noti_manage');
     }
 }
