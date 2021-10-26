@@ -35,17 +35,20 @@ Route::group(['middleware' => 'auth:admin'], function () {
 });
 
 });
-
+Auth::routes();
 
 Route::get('logout', function () {
     Session()->flush();
     auth()->logout();
-    return Redirect::to('/');
+    return Redirect::to('/login');
 })->name('logout');
-//Route::view('/home', 'home')->middleware('auth');
 
-Auth::routes();
-Route::view('/', 'welcome');
+Route::get('/', function () {
+
+    return redirect('/login');
+
+});
+/*Route::view('/', 'welcome');*/
 //
 Route::middleware('web')->domain(env('APP_LINK'))->group(function () {
 
