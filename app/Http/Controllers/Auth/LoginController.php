@@ -61,11 +61,13 @@ class LoginController extends Controller
 
         $messages = [
             'mailaddress.required' => 'メールアドレスを入力してください！',
-            'password.required' => 'パスワードを入力してください！'
+            'password.required' => 'パスワードを入力してください！',
+            'password.regex' => "半角英数のみ入力可能です",
+            'mailaddress.regex' => '半角英数のみ入力可能です'
         ];
         $validatedData = $request->validate([
-            'mailaddress'   => ['required', 'email'],
-            'password' => ['required', 'string'],
+            'mailaddress'   => ['required', 'email', 'regex:/^[!-~]+$/'],
+            'password' => ['required', 'string', 'regex:/^[!-~]+$/'],
         ], $messages);
         if (Auth::guard('admin')->attempt(['mailaddress' => $request->mailaddress, 'password' => $request->password], $request->get('remember'))) {
 
